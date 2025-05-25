@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import {sendOtp} from "../../services/auth";
 
+import styles from "./CheckOtpForm.module.css";
 
 function SendOtpForm({setStep, mobile, setMobile}) {
     const submitHandler = async(event) => {
@@ -13,13 +14,9 @@ function SendOtpForm({setStep, mobile, setMobile}) {
         console.log(response, error)
     }
 
-    SendOtpForm.propTypes = {
-        setStep: PropTypes.func.isRequired,
-        mobile: PropTypes.string.isRequired,
-        setMobile: PropTypes.func.isRequired,
-    };
+    
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={styles.form}>
         <p>ورود به حساب کاربری</p>
         <span>
             برای استفاده از امکانات دیوار، لطفا شماره موبایل خود را وارد کنید.کد تایید به این شماره پیامک خواهد شد.
@@ -36,5 +33,10 @@ function SendOtpForm({setStep, mobile, setMobile}) {
     </form>
   )
 }
+SendOtpForm.propTypes = {
+        setStep: PropTypes.func.isRequired,
+        mobile: PropTypes.string.isRequired,
+        setMobile: PropTypes.func.isRequired,
+    };
 
 export default SendOtpForm
